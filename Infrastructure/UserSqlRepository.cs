@@ -11,7 +11,6 @@ namespace Infrastructure
         {
             using (var objConnection = new SqlConnection(ConnectionString))
             {
-
                 objConnection.Open();
                 SqlCommand objCommand = new SqlCommand("sp_Save",objConnection);
                 objCommand.CommandType = CommandType.StoredProcedure;

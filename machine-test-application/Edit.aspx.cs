@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.UI.WebControls;
 using Infrastructure;
 using Domain;
 using System.Data;
@@ -20,21 +21,31 @@ namespace machine_test_application
 
                     DataSet objDataSet = _objRepository.GetUser(selectedUserId);
 
-                    foreach (DataRow row in objDataSet.Tables[0].Rows)
-                    {
-                        txtName.Text = row["Name"].ToString();
-                        string gender = row["Gender"].ToString();
-                        string state = row["State"].ToString();
-                        if (gender == "Male")
-                        {
-                            RadioButtonMale.Checked = true;
-                        }
-                        if (gender == "Female")
-                        {
-                            RadioButtonFeamle.Checked = true;
-                        }
-                        DropDownList1.SelectedValue = state;
-                    }
+                    txtName.Text = objDataSet.Tables[0].Rows[0]["Name"].ToString();
+                    string gender = objDataSet.Tables[0].Rows[0]["Gender"].ToString();
+                    string state = objDataSet.Tables[0].Rows[0]["State"].ToString();
+                     foreach (ListItem item in RadioButtonList1.Items)
+                     {
+                         if (item.Text == gender)
+                         {
+                             item.Selected = true;
+                         }
+                     }
+                     DropDownList1.SelectedValue = state;
+                    //foreach (DataRow row in objDataSet.Tables[0].Rows)
+                    //{
+                    //    txtName.Text = row["Name"].ToString();
+                    //    string gender = row["Gender"].ToString();
+                    //    string state = row["State"].ToString();
+                    //    foreach (ListItem item in RadioButtonList1.Items)
+                    //    {
+                    //        if (item.Text == gender)
+                    //        {
+                    //            item.Selected = true;
+                    //        }
+                    //    }
+                    //    DropDownList1.SelectedValue = state;
+                    //}
                 }
            
             }
@@ -47,27 +58,19 @@ namespace machine_test_application
             User objUser = new User();
             objUser.Id = Session["SelectedId"].ToString();
             objUser.Name = txtName.Text;
-            if (RadioButtonMale.Checked)
+            foreach (ListItem item in RadioButtonList1.Items)
             {
-                objUser.Gender = "Male";
-            }
-            if (RadioButtonFeamle.Checked)
-            {
-                objUser.Gender = "Female";
+                if (item.Selected)
+                {
+                    objUser.Gender = item.Text;
+                }
             }
             objUser.State = DropDownList1.SelectedValue.ToString();
             _objRepository.UpdateUser(objUser);
-            Clear();
+           
             Response.Redirect("~/RegisteredEmployee.aspx");
 
         }
-        private void Clear()
-        {
-            txtName.Text = "";
-            RadioButtonMale.Checked = false;
-            RadioButtonFeamle.Checked = false;
-            DropDownList1.SelectedIndex = 0;
-
-        }
+      
     }
 }

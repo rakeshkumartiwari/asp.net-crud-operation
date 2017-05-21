@@ -31,22 +31,13 @@ namespace machine_test_application {
         protected global::System.Web.UI.WebControls.TextBox txtName;
         
         /// <summary>
-        /// RadioButtonMale control.
+        /// RadioButtonList1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RadioButtonMale;
-        
-        /// <summary>
-        /// RadioButtonFeamle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RadioButtonFeamle;
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList1;
         
         /// <summary>
         /// DropDownList1 control.

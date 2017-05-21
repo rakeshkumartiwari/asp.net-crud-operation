@@ -31,8 +31,10 @@
             <tr>
                 <td>Gender</td>
                 <td>
-                    <asp:RadioButton ID="RadioButtonMale" runat="server" GroupName="gender" Text="Male" />
-                    <asp:RadioButton ID="RadioButtonFeamle" runat="server" GroupName="gender" Text="Feamle" />
+                    <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal">
+                        <asp:ListItem>Male</asp:ListItem>
+                        <asp:ListItem>Female</asp:ListItem>
+                    </asp:RadioButtonList>
                 </td>
             </tr>
             <tr>
